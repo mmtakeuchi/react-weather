@@ -4,26 +4,40 @@ import Search from './components/Search'
 import WeatherCard from './components/WeatherCard'
 
 function App() {
-  const [weather, setWeather] = uesState([]);
+  const [weather, setWeather] = useState([]);
 
   const fetchWeather = (event) => {
-    event.preventDefault()
-    const baseURL = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+    const city = event.target.elements.city.value
+    event.preventDefault();
+    const baseURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
     
     fetch(baseURL)
       .then(response => response.json())
-      .then(data =>  data)
-      setWeather({
-        data: apiData
-      })
+      .then(data => 
+        setWeather({
+          data: data,
+          city: data.name,
+          mainWeather: data.weather[0].main,
+          description: data.weather[0].description,
+          temperature: data.main.temperature,
+          error: ""
+        })
+      )
       .catch(errors => console.log(errors))
   }
 
     return (
       <div className="App">
         <Search getWeather={fetchWeather} />
+        
+        <WeatherCard 
+          city={weather.city}
+          mainWeather={weather.mainWeather}
+          description={weather.description}
+          temperature={weather.temperature}
+          error={weather.error}
+        />
         {console.log(weather.data)}
-        <WeatherCard />
       </div>
     );
 }
