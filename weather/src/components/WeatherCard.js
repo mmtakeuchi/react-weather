@@ -1,9 +1,12 @@
 import React from 'react'
 
-const WeatherCard = () => {
+const WeatherCard = ({description, city, temperature, error}) => {
     return (
         <div>
-            Weather Card
+            {city && <p>{city}</p>}
+            {temperature && <p>{temperature}</p>}
+            {description && <p>{description}</p>}
+            {error && <p>{error}</p>}
         </div>
     )
 }

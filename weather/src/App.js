@@ -1,32 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Search from './components/Search'
 import WeatherCard from './components/WeatherCard'
 
-class App extends React.Component {
-    state = {
-      location: "",
-      weatherData: null
-    }
+function App() {
+  const [weather, setWeather] = uesState([]);
 
-  getWeatherData(location) {
+  const fetchWeather = (event) => {
+    event.preventDefault()
     const baseURL = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
     
     fetch(baseURL)
       .then(response => response.json())
-      .then(data =>  { console.log(data)
+      .then(data =>  data)
+      setWeather({
+        data: apiData
       })
       .catch(errors => console.log(errors))
   }
 
-  render () {
     return (
       <div className="App">
-        <Search getWeather={this.getWeatherData} />
+        <Search getWeather={fetchWeather} />
+        {console.log(weather.data)}
         <WeatherCard />
       </div>
     );
-  }
 }
 
 export default App;
