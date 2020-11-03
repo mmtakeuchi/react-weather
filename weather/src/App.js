@@ -11,23 +11,37 @@ function App() {
     event.preventDefault();
     const baseURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
     
-    fetch(baseURL)
-      .then(response => response.json())
-      .then(data => 
-        setWeather({
-          data: data,
-          city: data.name,
-          mainWeather: data.weather[0].main,
-          description: data.weather[0].description,
-          temperature: data.main.temperature,
-          error: ""
-        })
-      )
-      .catch(errors => console.log(errors))
+    if (city) {
+
+      fetch(baseURL)
+        .then(response => response.json())
+        .then(data => 
+          setWeather({
+            data: data,
+            city: data.name,
+            mainWeather: data.weather[0].main,
+            description: data.weather[0].description,
+            temperature: data.main.temp,
+            error: ""
+          })
+        )
+        .catch(errors => console.log(errors))
+    } else {
+      setWeather({
+        data: "",
+        city: "",
+        mainWeather: "",
+        description: "",
+        temperature: "",
+        error: "Please Type a City"
+      })
+    }
   }
 
     return (
       <div className="App">
+        <h2>Weather App</h2>
+
         <Search getWeather={fetchWeather} />
         
         <WeatherCard 

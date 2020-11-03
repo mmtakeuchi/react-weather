@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WeatherCard = ({description, city, temperature, error}) => {
+const WeatherCard = ({city, description, temperature, mainWeather, error}) => {
     return (
         <div>
             {city && <p>{city}</p>}
