@@ -21,7 +21,9 @@ function App() {
             city: data.name,
             mainWeather: data.weather[0].main,
             description: data.weather[0].description,
-            temperature: data.main.temp,
+            temperature: Math.round(data.main.temp * 9/5 - 459.67),
+            minTemp: Math.round(data.main.temp_min * 9/5 - 459.67),
+            maxTemp: Math.round(data.main.temp_max * 9/5 - 459.67),
             error: ""
           })
         )
@@ -33,6 +35,8 @@ function App() {
         mainWeather: "",
         description: "",
         temperature: "",
+        minTemp: "",
+        maxTemp: "",
         error: "Please Type a City"
       })
     }
@@ -49,6 +53,8 @@ function App() {
           mainWeather={weather.mainWeather}
           description={weather.description}
           temperature={weather.temperature}
+          minTemp={weather.minTemp}
+          maxTemp={weather.maxTemp}
           error={weather.error}
         />
         {console.log(weather.data)}
