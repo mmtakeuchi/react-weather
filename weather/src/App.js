@@ -27,11 +27,11 @@ function App() {
           setWeather({
             data: data,
             city: data.name,
-            mainWeather: data.weather[0].main,
             description: data.weather[0].description,
             temperature: Math.round(data.main.temp * 9/5 - 459.67),
             minTemp: Math.round(data.main.temp_min * 9/5 - 459.67),
             maxTemp: Math.round(data.main.temp_max * 9/5 - 459.67),
+            icon: data.weather[0].icon,
             error: ""
           })
         )
@@ -44,6 +44,7 @@ function App() {
         temperature: "",
         minTemp: "",
         maxTemp: "",
+        icon: "",
         error: "Please Type a City"
       })
     }
@@ -57,11 +58,11 @@ function App() {
         
         <WeatherCard 
           city={weather.city}
-          mainWeather={weather.mainWeather}
           description={weather.description}
           temperature={weather.temperature}
           minTemp={weather.minTemp}
           maxTemp={weather.maxTemp}
+          icon={weather.icon}
           error={weather.error}
         />
         {console.log(weather.data)}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WeatherCard = ({city, description, temperature, mainWeather, minTemp, maxTemp, error}) => {
+const WeatherCard = ({city, description, temperature, minTemp, maxTemp, icon, error}) => {
     const capitalize = (words) => {
         return words.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" ")
     }
@@ -8,6 +8,7 @@ const WeatherCard = ({city, description, temperature, mainWeather, minTemp, maxT
     return (
         <div>
             {city && <p>{city}</p>}
+            {icon && <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} />}
             {description && <p>{capitalize(description)}</p>}
             {temperature && <p>{temperature} °F</p>}
             <p>
