@@ -14,7 +14,15 @@ function App() {
     if (city) {
 
       fetch(baseURL)
-        .then(response => response.json())
+        .then(response => {
+          if (response.status == 200) {
+            return response.json();
+          } else {
+            // throw Error(response.statusText);
+            alert("Please enter a valid city");
+            window.location.reload()
+          }
+        })
         .then(data => 
           setWeather({
             data: data,
@@ -27,7 +35,6 @@ function App() {
             error: ""
           })
         )
-        .catch(errors => console.log(errors))
     } else {
       setWeather({
         data: "",

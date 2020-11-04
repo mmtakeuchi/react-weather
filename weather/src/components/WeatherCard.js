@@ -10,8 +10,10 @@ const WeatherCard = ({city, description, temperature, mainWeather, minTemp, maxT
             {city && <p>{city}</p>}
             {description && <p>{capitalize(description)}</p>}
             {temperature && <p>{temperature} °F</p>}
-            {maxTemp && <p>H:{maxTemp}°F</p>}
-            {minTemp && <p>L:{minTemp}°F</p>}
+            <p>
+                {maxTemp && <span>H:{maxTemp}°F     </span>}
+                {minTemp && <span>  L:{minTemp}°F</span>}
+            </p>
             {error && <p>{error}</p>}
         </div>
     )
