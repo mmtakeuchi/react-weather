@@ -7,8 +7,8 @@ const WeatherCard = ({city, description, temperature, minTemp, maxTemp, icon, er
 
     return (
         <div>
-            {city && <p>{city}</p>}
-            {icon && <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} />}
+            {city && <h3>{city}</h3>}
+            {icon && <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather icon"/>}
             {description && <p>{capitalize(description)}</p>}
             {temperature && <p>{temperature} °F</p>}
             <p>

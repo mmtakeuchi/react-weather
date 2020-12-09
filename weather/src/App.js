@@ -2,52 +2,48 @@ import React, { useState } from 'react';
 import './App.css';
 import Search from './components/Search'
 import WeatherCard from './components/WeatherCard'
+import ForecastCards from './components/ForecastCards'
 
 function App() {
   const [weather, setWeather] = useState([]);
+  const [forecast, setForecast] = useState([]);
 
   const fetchWeather = (event) => {
-    const city = event.target.elements.city.value
+    let city = event.target.elements.city.value
     event.preventDefault();
-    const baseURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
-    
-    if (city) {
+    const oneDayURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
+    const fiveDayURL = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
 
-      fetch(baseURL)
-        .then(response => {
-          if (response.status == 200) {
-            return response.json();
-          } else {
-            // throw Error(response.statusText);
-            alert("Please enter a valid city");
-            window.location.reload()
-          }
-        })
-        .then(data => 
-          setWeather({
-            data: data,
-            city: data.name,
-            description: data.weather[0].description,
-            temperature: Math.round(data.main.temp * 9/5 - 459.67),
-            minTemp: Math.round(data.main.temp_min * 9/5 - 459.67),
-            maxTemp: Math.round(data.main.temp_max * 9/5 - 459.67),
-            icon: data.weather[0].icon,
-            error: ""
-          })
-        )
-    } else {
-      setWeather({
-        data: "",
-        city: "",
-        mainWeather: "",
-        description: "",
-        temperature: "",
-        minTemp: "",
-        maxTemp: "",
-        icon: "",
-        error: "Please Type a City"
+    if (city) {
+      Promise.all([
+        fetch(oneDayURL),
+        fetch(fiveDayURL)
+      ])
+      .then(async([aa, bb]) => {
+        const a = await aa.json();
+        const b = await bb.json();
+        return [a, b]
       })
+      .then(results => {
+        const forecastData = results[1].list.filter(weather => weather.dt_txt.includes("12:00"))
+
+        setWeather({
+          data: results[0],
+          city: results[0].name,
+          description: results[0].weather[0].description,
+          temperature: results[0].main.temp.toFixed(0), 
+          minTemp: results[0].main.temp_min.toFixed(0), 
+          maxTemp: results[0].main.temp_max.toFixed(0), 
+          icon: results[0].weather[0].icon,
+          error: ""
+        });
+
+        setForecast(forecastData)
+      })
+    } else {
+      window.location.reload()
     }
+    event.target.elements[0].value = "";
   }
 
     return (
@@ -65,7 +61,9 @@ function App() {
           icon={weather.icon}
           error={weather.error}
         />
-        {console.log(weather.data)}
+
+        <ForecastCards forecast={forecast}/>
+        {console.log(forecast)}
       </div>
     );
 }
