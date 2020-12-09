@@ -1,12 +1,13 @@
 import React from 'react'
+import ForecastCard from './ForecastCard'
 
-const ForecastCards = ({forecast}) => {
+const ForecastContainer = ({forecast}) => {
     if (forecast) {
-        const week = forecast.map((data,i) => <p key={i}>{data.weather[0].description}</p>)
+        const week = forecast.map((data,i) => <ForecastCard key={i} data={data} />)
         // const week = props.map(data => data.name)
     
         return (
-            <div>
+            <div className="card-container">
                 {week}
             </div>
         ) 
@@ -19,4 +20,4 @@ const ForecastCards = ({forecast}) => {
     )
 }
 
-export default ForecastCards
+export default ForecastContainer

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Search from './components/Search'
 import WeatherCard from './components/WeatherCard'
-import ForecastCards from './components/ForecastCards'
+import ForecastContainer from './components/ForecastContainer'
 
 function App() {
   const [weather, setWeather] = useState([]);
@@ -62,7 +62,7 @@ function App() {
           error={weather.error}
         />
 
-        <ForecastCards forecast={forecast}/>
+        <ForecastContainer forecast={forecast}/>
         {console.log(forecast)}
       </div>
     );
