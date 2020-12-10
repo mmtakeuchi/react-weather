@@ -10,13 +10,13 @@ const WeatherCard = ({city, description, temperature, minTemp, maxTemp, icon, er
     
     return (
         <div>
-            {city && <h3>{city}</h3>}
+            {city && <h1>{city}</h1>}
             {icon && <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather icon"/>}
             {description && <p>{capitalize(description)}</p>}
-            {temperature && <p>{degree === false ? fahrenheit(temperature) + "°F" : celsius(temperature) + "°C"} </p>}
+            {temperature && <p>{degree === false ? fahrenheit(temperature) + "°F " : celsius(temperature) + "°C"} </p>}
             <p>
-                {maxTemp && <span>H:     {degree === false ? fahrenheit(maxTemp) + "°F" : celsius(maxTemp) + "°C"}</span>}
-                {minTemp && <span>  L:{degree === false ? fahrenheit(minTemp) + "°F" : celsius(minTemp) + "°C"}</span>}
+                {maxTemp && <span className="maxTemp">H:    {degree === false ? fahrenheit(maxTemp) + "°F" : celsius(maxTemp) + "°C"}   </span>} 
+                {minTemp && <span>L:  {degree === false ? fahrenheit(minTemp) + "°F" : celsius(minTemp) + "°C"}</span>}
             </p>
             {error && <p>{error}</p>}
         </div>

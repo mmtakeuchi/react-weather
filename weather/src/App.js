@@ -15,7 +15,7 @@ function App() {
     event.preventDefault();
     const oneDayURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
     const fiveDayURL = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
-    console.log(oneDayURL)
+    
     if (city) {
       Promise.all([
         fetch(oneDayURL),
@@ -27,7 +27,7 @@ function App() {
         return [a, b]
       })
       .then(results => {
-        const forecastData = results[1].list.filter(weather => weather.dt_txt.includes("12:00"))
+        const forecastData = results[1].list.filter(weather => weather.dt_txt.includes("21:00"))
 
         setWeather({
           data: results[0],
@@ -86,8 +86,8 @@ function App() {
           degree={degree}
         />
 
-        <ForecastContainer forecast={forecast}/>
-        {console.log(forecast)}
+        <ForecastContainer forecast={forecast} degree={degree}/>
+        
       </div>
     );
 }

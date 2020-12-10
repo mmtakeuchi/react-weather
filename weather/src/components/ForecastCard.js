@@ -1,8 +1,6 @@
 import React from 'react'
 
-const ForecastCard = ({data}) => {
-    console.log(data)
-
+const ForecastCard = ({data, degree}) => {
     const capitalize = (words) => {
         return words.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" ")
     }
@@ -11,6 +9,9 @@ const ForecastCard = ({data}) => {
     const d = new Date(data.dt * 1000);
     const dayName = days[d.getDay()];
 
+    const fahrenheit = (temp) => Math.round(temp);
+    const celsius = (temp) => Math.round((temp - 32) * 5/9);
+
     return (
         <div className="forecast-card">
             <h3>{dayName}</h3>
@@ -18,8 +19,8 @@ const ForecastCard = ({data}) => {
             <div>
                 <p className="card-text">{capitalize(data.weather[0].description)}</p>
                 <p>
-                    <span>H: {data.main.temp_max.toFixed(0)}°F</span>
-                    <span>L: {data.main.temp_min.toFixed(0)}°F</span> 
+                    <span className="maxTemp">H: {degree === false ? fahrenheit(data.main.temp_max.toFixed(0)) + "°F " : celsius(data.main.temp_max.toFixed(0)) + "°C    "}</span>
+                    <span>L: {degree === false ? fahrenheit(data.main.temp_min.toFixed(0)) + "°F" : celsius(data.main.temp_min.toFixed(0)) + "°C"}</span> 
                 </p>
             </div>
         </div>

@@ -48,6 +48,10 @@
   padding: 5px;
 }
 
+.maxTemp {
+  margin-right: 10px;
+}
+
 .toggleBtn{
   display: flex;
   justify-content: center;
