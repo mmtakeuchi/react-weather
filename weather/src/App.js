@@ -8,13 +8,14 @@ import DegreeButton from './components/DegreeButton'
 function App() {
   const [weather, setWeather] = useState([]);
   const [forecast, setForecast] = useState([]);
+  const [degree, setDegree] = useState(false);
 
   const fetchWeather = (event) => {
     let city = event.target.elements.city.value
     event.preventDefault();
     const oneDayURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
     const fiveDayURL = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
-
+    console.log(oneDayURL)
     if (city) {
       Promise.all([
         fetch(oneDayURL),
@@ -69,7 +70,10 @@ function App() {
 
         <Search getWeather={fetchWeather} />
         
-        <DegreeButton/>
+        <DegreeButton 
+          isOn={degree}
+          handleToggle={() => setDegree(!degree)}
+        />
 
         <WeatherCard 
           city={weather.city}
@@ -79,6 +83,7 @@ function App() {
           maxTemp={weather.maxTemp}
           icon={weather.icon}
           error={weather.error}
+          degree={degree}
         />
 
         <ForecastContainer forecast={forecast}/>

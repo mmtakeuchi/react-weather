@@ -1,15 +1,23 @@
 import React, { useState } from 'react'
 
-const DegreeButton = ({degree}) => {
-    
+const DegreeButton = ({ isOn, handleToggle }) => {
 
     return (
         <div className="toggleBtn">
-            <label className="switch switch-flat">
-                <input className="switch-input" type="checkbox" />
-                <span className="switch-label" data-on="°C" data-off="°F"></span> 
-                <span className="switch-handle"></span> 
-            </label>
+            <input
+            checked={isOn}
+            onChange={handleToggle}
+            className="react-switch-checkbox"
+            id={`react-switch-new`}
+            type="checkbox"
+        />
+        <label
+            style={{ background: isOn && '#06D6A0' }}
+            className="react-switch-label"
+            htmlFor={`react-switch-new`}
+        >
+            <span className={`react-switch-button`} />
+        </label>
         </div>
     )
 }
