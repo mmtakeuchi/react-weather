@@ -3,6 +3,7 @@ import './App.css';
 import Search from './components/Search'
 import WeatherCard from './components/WeatherCard'
 import ForecastContainer from './components/ForecastContainer'
+import DegreeButton from './components/DegreeButton'
 
 function App() {
   const [weather, setWeather] = useState([]);
@@ -61,9 +62,6 @@ function App() {
     event.target.elements[0].value = "";
   }
 
-  const toggleDegrees = (temp) => {
-    
-  }
 
     return (
       <div className="App">
@@ -71,6 +69,8 @@ function App() {
 
         <Search getWeather={fetchWeather} />
         
+        <DegreeButton/>
+
         <WeatherCard 
           city={weather.city}
           description={weather.description}
