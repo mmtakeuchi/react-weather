@@ -40,10 +40,29 @@ function App() {
 
         setForecast(forecastData)
       })
+      .catch(errors => {
+
+        setWeather({
+          data: "",
+          city: "",
+          description: "",
+          temperature: "", 
+          minTemp: "", 
+          maxTemp: "", 
+          icon: "",
+          error: "Sorry no city found. Please enter another city."
+        });
+
+        setForecast("")
+      })
     } else {
       window.location.reload()
     }
     event.target.elements[0].value = "";
+  }
+
+  const toggleDegrees = (temp) => {
+    
   }
 
     return (

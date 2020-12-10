@@ -40,5 +40,10 @@
 
 .card-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.forecast-card {
+  border: 1px solid black;
+  padding: 5px;
 }

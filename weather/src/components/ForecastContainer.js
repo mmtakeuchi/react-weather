@@ -2,9 +2,8 @@ import React from 'react'
 import ForecastCard from './ForecastCard'
 
 const ForecastContainer = ({forecast}) => {
-    if (forecast) {
+    if (forecast.length > 0) {
         const week = forecast.map((data,i) => <ForecastCard key={i} data={data} />)
-        // const week = props.map(data => data.name)
     
         return (
             <div className="card-container">
@@ -15,7 +14,7 @@ const ForecastContainer = ({forecast}) => {
 
     return (
         <div>
-            Week Container
+            
         </div>
     )
 }
