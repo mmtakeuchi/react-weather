@@ -30,7 +30,7 @@ function App() {
         const forecastData = results[1].list.filter(weather => weather.dt_txt.includes("21:00"))
 
         setWeather({
-          data: results[0],
+          main: results[0].weather[0].main,
           city: results[0].name,
           description: results[0].weather[0].description,
           temperature: results[0].main.temp.toFixed(0), 
@@ -45,7 +45,7 @@ function App() {
       .catch(errors => {
 
         setWeather({
-          data: "",
+          main: "",
           city: "",
           description: "",
           temperature: "", 
@@ -63,10 +63,14 @@ function App() {
     event.target.elements[0].value = "";
   }
 
+  const weatherClass = (mainWeather) => {
+    return (mainWeather) ? mainWeather.toLowerCase() : ""
+  }
+
 
     return (
-      <div className="App">
-        <h2>Weather App</h2>
+      <div className={`app ${weatherClass(weather.main)}`}>
+        <h1 className="title">Weather App</h1>
 
         <Search getWeather={fetchWeather} />
         
@@ -87,7 +91,7 @@ function App() {
         />
 
         <ForecastContainer forecast={forecast} degree={degree}/>
-        
+        {console.log({weather})}
       </div>
     );
 }
