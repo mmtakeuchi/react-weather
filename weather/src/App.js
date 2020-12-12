@@ -27,6 +27,7 @@ function App() {
         return [a, b]
       })
       .then(results => {
+        console.log(results[0])
         const forecastData = results[1].list.filter(weather => weather.dt_txt.includes("21:00"))
 
         setWeather({
@@ -63,13 +64,8 @@ function App() {
     event.target.elements[0].value = "";
   }
 
-  const weatherClass = (mainWeather) => {
-    return (mainWeather) ? mainWeather.toLowerCase() : ""
-  }
-
-
     return (
-      <div className={`app ${weatherClass(weather.main)}`}>
+      <div className="app">
         <h1 className="title">Weather App</h1>
 
         <Search getWeather={fetchWeather} />
@@ -91,7 +87,7 @@ function App() {
         />
 
         <ForecastContainer forecast={forecast} degree={degree}/>
-        {console.log({weather})}
+        
       </div>
     );
 }
