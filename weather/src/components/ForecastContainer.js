@@ -7,7 +7,8 @@ const ForecastContainer = ({forecast, degree}) => {
     
         return (
             <div className="forecast-container">
-                {week}
+                <h2>5 Day Forecast</h2>
+                <div className="card-container">{week}</div>
             </div>
         ) 
     }
