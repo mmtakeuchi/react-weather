@@ -1,24 +1,23 @@
 import React from 'react'
 
 const WeatherCard = ({city, description, temperature, minTemp, maxTemp, icon, error, degree}) => {
-    const capitalize = (words) => {
-        return words.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" ")
-    }
 
     const fahrenheit = (temp) => Math.round(temp);
     const celsius = (temp) => Math.round((temp - 32) * 5/9);
     
     return (
-        <div>
-            {city && <h1>{city}</h1>}
-            {icon && <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather icon"/>}
-            {description && <p>{capitalize(description)}</p>}
-            {temperature && <p>{degree === false ? fahrenheit(temperature) + "°F " : celsius(temperature) + "°C"} </p>}
-            <p>
-                {maxTemp && <span className="maxTemp">H:    {degree === false ? fahrenheit(maxTemp) + "°F" : celsius(maxTemp) + "°C"}   </span>} 
-                {minTemp && <span>L:  {degree === false ? fahrenheit(minTemp) + "°F" : celsius(minTemp) + "°C"}</span>}
-            </p>
-            {error && <p>{error}</p>}
+        <div className="weatherCard">
+            <div className="city">{city && <h1 >{city}</h1>}</div>
+            <div className="icon">{icon && <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather icon"/>}</div>
+            <div className="temp">{temperature && <h2 >{degree === false ? fahrenheit(temperature) + "° " : celsius(temperature) + "°"} </h2>}</div>
+            <div className="range">
+                <h3 >
+                    {maxTemp && <span className="maxTemp">{degree === false ? fahrenheit(maxTemp) + "° / " : celsius(maxTemp) + "° / "}</span>} 
+                    {minTemp && <span className="minTemp">{degree === false ? fahrenheit(minTemp) + "°" : celsius(minTemp) + "°"}</span>}
+                </h3>
+            </div>
+            <div className="desc">{description && <h2 >{description}</h2>}</div>
+            {error && <h2>{error}</h2>}
         </div>
     )
 }

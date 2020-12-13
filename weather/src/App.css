@@ -4,41 +4,72 @@ html, body {
 }
 
 .app {
-  text-align: center;
   width: 100%;
   height: 100vh;
-  margin: 0px;
-  padding: 0px;
   background-image: url(./assets/sky.jpg);
   background-size: cover;
   background-position: center;
 }
 
-h1.title {
-  margin-top: 0px;
-  padding-top:10px;
+p, h2 {
+  text-transform: capitalize;
 }
 
-.card-container {
-  display: flex;
-  justify-content: space-evenly;
-  padding-bottom: 20px;
+.title {
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding: 20px 0;
 }
 
-.forecast-card {
-  border: 1px solid black;
-  padding: 5px;
+
+/* Search */
+.searchBar {
+  top: 0%;
+  position: relative;
+  margin: 0 auto;
+  max-width: 500px;
+  transition: 0.8s 0.5s;
 }
 
-.maxTemp {
-  margin-right: 10px;
+label {
+  display: block;
+  position: absolute;
+  top: 45%;
+  left: 20px;
+  transform: translate(-50%, -50%);
+  height: 14px;
+  width: 14px;
+  font-size: 15px;
+  color: black;
 }
 
+.searchInput {
+  width: 100%;
+  border: none;
+  background-color: #ffffff;
+  font-size: 16px;
+  padding: 10px 10px 10px 35px;
+  color: #c5c5c5;
+  transition: 0.2s;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+input:hover, input:focus {
+  color: black;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1.5px solid #009688;
+  outline: none;
+}
+
+/* toggle */
 .toggleBtn{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5px;
+  margin-top: 20px;
+  padding-right: 40px;
+  justify-self: end;
+  position: absolute;
+  right: 0;
 }
 
 .react-switch-checkbox {
@@ -52,8 +83,8 @@ h1.title {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  width: 60px;
-  height: 25px;
+  width: 50px;
+  height: 23px;
   background: white;
   border: 1px solid black;
   border-radius: 100px;
@@ -66,8 +97,8 @@ h1.title {
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 26px;
-  height: 25px;
+  width: 23px;
+  height: 22px;
   border-radius: 50px;
   border: 1px solid black;
   transition: 0.2s;
@@ -81,5 +112,58 @@ h1.title {
 }
 
 .react-switch-label:active .react-switch-button {
-  width: 30px;
+  width: 20px;
+}
+
+/* current weather */
+.city { 
+  grid-area: header;
+  font-size: 25px;
+ }
+.icon { 
+  grid-area: right;
+}
+.temp { 
+  grid-area: main;
+  font-size: 45px;
+ }
+.range { 
+  grid-area: footer;
+  font-size: 25px;
+ }
+.desc { 
+  grid-area: menu;
+  font-size: 25px; 
+}
+
+.weatherCard {
+  display: grid;
+  grid-template-areas:
+  'header right'
+  'main menu'
+  'main footer';
+  grid-gap: 2px;
+  padding: 20px auto;
+}
+
+.weatherCard > * {
+  text-align: center;
+}
+
+.icon img {
+  height: 20vh;
+}
+
+
+/* forecast */
+.forecast-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 20px;
+}
+
+.forecast-card {
+  align-items: center;
+  border: 1px solid black;
+  padding: 5px;
 }

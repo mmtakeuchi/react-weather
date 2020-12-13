@@ -19,7 +19,7 @@ const DegreeButton = ({ isOn, handleToggle }) => {
         >
             <span style={{marginLeft: "4px"}}>°C</span>
             <span className={`react-switch-button`} />
-            <span style={{marginRight: "3px"}}>°F</span>
+            <span style={{marginRight: "4px"}}>°F</span>
         </label>
         
         </div>

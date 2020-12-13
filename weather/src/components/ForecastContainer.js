@@ -6,7 +6,7 @@ const ForecastContainer = ({forecast, degree}) => {
         const week = forecast.map((data,i) => <ForecastCard key={i} data={data} degree={degree}/>)
     
         return (
-            <div className="card-container">
+            <div className="forecast-container">
                 {week}
             </div>
         ) 
