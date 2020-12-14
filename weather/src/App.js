@@ -33,6 +33,7 @@ function App() {
         setWeather({
           main: results[0].weather[0].main,
           city: results[0].name,
+          country: results[0].sys.country,
           description: results[0].weather[0].description,
           temperature: results[0].main.temp.toFixed(0), 
           minTemp: results[0].main.temp_min.toFixed(0), 
@@ -78,6 +79,7 @@ function App() {
 
         <WeatherCard 
           city={weather.city}
+          country={weather.country}
           description={weather.description}
           temperature={weather.temperature}
           minTemp={weather.minTemp}
