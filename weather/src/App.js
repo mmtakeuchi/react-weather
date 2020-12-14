@@ -27,33 +27,19 @@ function App() {
         return [a, b]
       })
       .then(results => {
-        console.log(results[0])
         const forecastData = results[1].list.filter(weather => weather.dt_txt.includes("21:00"))
 
         setWeather({
-          main: results[0].weather[0].main,
-          city: results[0].name,
-          country: results[0].sys.country,
-          description: results[0].weather[0].description,
-          temperature: results[0].main.temp.toFixed(0), 
-          minTemp: results[0].main.temp_min.toFixed(0), 
-          maxTemp: results[0].main.temp_max.toFixed(0), 
-          icon: results[0].weather[0].icon,
+          weather: results[0], 
           error: ""
-        });
+        })
 
         setForecast(forecastData)
       })
       .catch(errors => {
 
         setWeather({
-          main: "",
-          city: "",
-          description: "",
-          temperature: "", 
-          minTemp: "", 
-          maxTemp: "", 
-          icon: "",
+          weather: "",
           error: "Sorry no city found. Please enter another city."
         });
 
@@ -73,18 +59,10 @@ function App() {
         />
         <h1 className="title">Weather App</h1>
 
-
         <Search getWeather={fetchWeather} />
-        
 
         <WeatherCard 
-          city={weather.city}
-          country={weather.country}
-          description={weather.description}
-          temperature={weather.temperature}
-          minTemp={weather.minTemp}
-          maxTemp={weather.maxTemp}
-          icon={weather.icon}
+          weather={weather}
           error={weather.error}
           degree={degree}
         />
