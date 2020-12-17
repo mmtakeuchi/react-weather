@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const ForecastCard = ({data, degree}) => {
 
@@ -16,7 +16,7 @@ const ForecastCard = ({data, degree}) => {
                 <span>{degree === false ? fahrenheit(data.main.temp_max.toFixed(0)) + "° / " : celsius(data.main.temp_max.toFixed(0)) + "° / "}</span>
                 <span>{degree === false ? fahrenheit(data.main.temp_min.toFixed(0)) + "°" : celsius(data.main.temp_min.toFixed(0)) + "°"}</span> 
             </p>
-            <img className="forecast-icon" src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="weather icon"/>
+            <img className="forecast-icon" src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`} alt="weather icon"/>
             <p className="forecast-text">{data.weather[0].description}</p>
     
         </div>
