@@ -1,6 +1,7 @@
-html, body {
+* {
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box;
 }
 
 .app {
@@ -13,7 +14,9 @@ html, body {
   overflow: auto;
 }
 
-h2, div, p {
+h2,
+div,
+p {
   text-transform: capitalize;
 }
 
@@ -60,18 +63,21 @@ label {
   color: #c5c5c5;
   transition: 0.2s;
   border-radius: 20px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-input:hover, input:focus {
+input:hover,
+input:focus {
   color: black;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
   border: 1.5px solid #009688;
   outline: none;
 }
 
 /* toggle */
-.toggleBtn{
+.toggleBtn {
   margin-top: 20px;
   padding-right: 40px;
   justify-self: end;
@@ -96,11 +102,11 @@ input:hover, input:focus {
   border: 1px solid black;
   border-radius: 100px;
   position: relative;
-  transition: background-color .2s;
+  transition: background-color 0.2s;
 }
 
 .react-switch-label .react-switch-button {
-  content: '';
+  content: "";
   position: absolute;
   top: 0px;
   left: 0px;
@@ -174,8 +180,7 @@ input:hover, input:focus {
 
 .mainContent {
   display: grid;
-  grid-template-areas:
-  'main menu';
+  grid-template-areas: "main menu";
 }
 
 .mainContent > div {
@@ -219,8 +224,8 @@ input:hover, input:focus {
 .details {
   display: grid;
   grid-template-areas:
-  'topL topM topR'
-  'botL botM botR';
+    "topL topM topR"
+    "botL botM botR";
   border: 1px solid black;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
@@ -234,12 +239,24 @@ input:hover, input:focus {
   text-align: center;
 }
 
-.maxTemp { grid-area: topL}
-.minTemp { grid-area: botL}
-.sunrise { grid-area: topM}
-.sunset { grid-area: botM}
-.wind { grid-area: topR}
-.humid { grid-area: botR}
+.maxTemp {
+  grid-area: topL;
+}
+.minTemp {
+  grid-area: botL;
+}
+.sunrise {
+  grid-area: topM;
+}
+.sunset {
+  grid-area: botM;
+}
+.wind {
+  grid-area: topR;
+}
+.humid {
+  grid-area: botR;
+}
 
 .wind span {
   text-transform: lowercase;
@@ -252,8 +269,20 @@ input:hover, input:focus {
   padding: 20px 50px;
 }
 
+@media screen and (max-width: 800px) {
+  .card-container {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .forecast-card {
+    flex: 100%;
+  }
+}
+
 .card-container {
   display: flex;
+  flex-direction: row;
   float: left;
   justify-content: space-evenly;
 }
