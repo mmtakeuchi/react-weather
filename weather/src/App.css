@@ -5,7 +5,9 @@
 }
 
 .app {
-  /* display: flex; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
   width: 100%;
   height: 100vh;
   background-image: url(./assets/sky.jpg);
@@ -23,14 +25,10 @@ p {
 .title {
   display: block;
   text-align: center;
+  align-items: flex-start;
   margin: 0;
   padding: 20px 0;
   font-size: 40px;
-}
-
-.icon {
-  color: #ffffff;
-  font-size: 100px;
 }
 
 /* Search */
@@ -80,9 +78,9 @@ input:focus {
 .toggleBtn {
   margin-top: 20px;
   padding-right: 40px;
-  justify-self: end;
-  position: absolute;
-  right: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .react-switch-checkbox {
@@ -150,12 +148,6 @@ input:focus {
   padding: 20px;
 }
 
-@media screen and (max-width: 925px) {
-  .weatherCard > .column {
-    width: 100%;
-  }
-}
-
 .weatherCard {
   display: flex;
   flex-wrap: wrap;
@@ -187,34 +179,30 @@ input:focus {
 
 .mainContent {
   display: grid;
-  grid-template-areas: "main menu";
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .mainContent > div {
   margin: 10px;
 }
 
-.tempMain {
-  grid-area: main;
-  margin: 0;
-  text-align: center;
-}
-
 .temp {
+  text-align: center;
+  justify-content: center;
   font-size: 130px;
   font-weight: 500;
-  margin-bottom: 20px;
+  margin-left: 2em;
 }
 
 .iconDesc {
-  grid-area: menu;
   margin: 0;
   text-align: center;
 }
 
 .icon {
+  color: #ffffff;
   max-width: 100%;
-  font-size: 150px;
+  font-size: 10em;
   text-align: center;
 }
 
@@ -276,17 +264,6 @@ input:focus {
   padding: 20px 50px;
 }
 
-@media screen and (max-width: 800px) {
-  .card-container {
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-
-  .forecast-card {
-    flex: 100%;
-  }
-}
-
 .card-container {
   display: flex;
   flex-direction: row;
@@ -298,7 +275,7 @@ input:focus {
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  width: 20%;
+  flex: 20%;
   margin: 5px 15px;
   padding: 10px 5px;
   border: 1px solid black;
@@ -327,4 +304,38 @@ input:focus {
 .forecast-icon {
   height: 100px;
   width: 100px;
+}
+
+@media screen and (max-width: 980px) {
+  .heading {
+    text-align: center;
+  }
+
+  .weatherCard > .column {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 825px) {
+  .card-container {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .forecast-card {
+    flex: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .mainContent {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .details {
+    display: grid;
+    grid-template-areas:
+      "topL botL"
+      "topM botM"
+      "topR botR";
+  }
 }
