@@ -4,8 +4,8 @@ Website: https://warm-plateau-75803.herokuapp.com/
 
 Weather app that shows results about the current and weekly forecast for a city.
 
-![Screenshot](screenshot.png)
-
+![img](screenshot.png)
+<img src="/weather/src/assets/screenshot.png">
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
