@@ -31,11 +31,14 @@ const ForecastCard = ({ data, degree }) => {
             : celsius(data.main.temp_min.toFixed(0)) + "°"}
         </span>
       </p>
-      <img
-        className="forecast-icon"
-        src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`}
-        alt="weather icon"
-      />
+      <div className="icon-container">
+        <img
+          className="forecast-icon"
+          src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`}
+          alt="weather icon"
+        />
+      </div>
+      <div className="empty"></div>
       <p className="forecast-text">{data.weather[0].description}</p>
     </div>
   );

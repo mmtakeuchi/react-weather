@@ -7,7 +7,6 @@
 .app {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   width: 100%;
   height: 100vh;
   background-image: url(./assets/sky.jpg);
@@ -151,6 +150,7 @@ input:focus {
 .weatherCard {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   flex-basis: 100%;
   width: 100%;
@@ -183,16 +183,11 @@ input:focus {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.mainContent > div {
-  margin: 10px auto;
-}
-
 .temp {
   text-align: center;
-  justify-content: center;
   font-size: 130px;
   font-weight: 500;
-  margin-left: 2em;
+  margin: auto;
 }
 
 .iconDesc {
@@ -315,19 +310,54 @@ input:focus {
   .weatherCard > .column {
     width: 100%;
   }
+
+  .forecast-card {
+    margin: 5px;
+  }
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 700px) {
   .card-container {
     flex-direction: column;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 
   .forecast-card {
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
     flex: 100%;
+    margin: 5px 5px;
+  }
+
+  .forecast-day {
+    width: 100%;
+  }
+
+  .icon-container,
+  .forecast-temp,
+  .forecast-text,
+  .empty {
+    flex: 50%;
+  }
+
+  .forecast-icon {
+    max-height: 100px;
+    max-width: 100px;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 @media screen and (max-width: 500px) {
+  .currentWeather {
+    padding: 20px 20px;
+  }
+
+  .weatherCard {
+    font-size: 0.75rem;
+  }
+
   .mainContent {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -338,5 +368,14 @@ input:focus {
       "topL botL"
       "topM botM"
       "topR botR";
+  }
+
+  .details > div {
+    margin: 5px;
+    padding: 10px;
+  }
+
+  .forecast-card {
+    width: 100%;
   }
 }
