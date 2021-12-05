@@ -4,7 +4,7 @@ Weather app that shows results about the current and weekly forecast for a city.
 
 ## Demo
 
-<a href="https://warm-plateau-75803.herokuapp.com/">React Weather</a>
+<a href="https://weather-react-front.netlify.app/">React Weather</a>
 
 <img src="/weather/src/assets/screenshot.png">
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -150,6 +150,7 @@ input:focus {
 
 .weatherCard {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   flex-basis: 100%;
   width: 100%;
@@ -183,7 +184,7 @@ input:focus {
 }
 
 .mainContent > div {
-  margin: 10px;
+  margin: 10px auto;
 }
 
 .temp {
@@ -315,7 +316,7 @@ input:focus {
     width: 100%;
   }
 }
-@media screen and (max-width: 825px) {
+@media screen and (max-width: 750px) {
   .card-container {
     flex-direction: column;
     flex-wrap: wrap;
